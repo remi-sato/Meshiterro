@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   
   get "homes/about",to: "homes#about",as: "about"
 
-  resources :post_image,only: [:new, :index, :show]
-
+  resources :post_images,only: [:new, :create, :index, :show]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

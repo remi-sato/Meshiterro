@@ -4,6 +4,6 @@ class User < ApplicationRecord
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 
-  has_many :post_images,depend: :destroy
+  has_many :post_images,dependent: :destroy
   
 end
