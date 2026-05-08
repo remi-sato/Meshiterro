@@ -13,8 +13,13 @@ class UsersController < ApplicationController
     else
       # エラー時はフォームを再表示
       render :new,status: :unprocessable_entity
+    end
   end
-end
+
+  def show
+    @user = User.find(params[:id])
+    @post_images=@user.post_images
+  end
 
  private
 
@@ -22,4 +27,6 @@ end
    # name,email_address,password,password_confirmationを許可
    params.require(:user).permit(:name, :email_address, :password, :password_confirmation)
  end  
+
 end
+
