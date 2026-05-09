@@ -39,7 +39,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_09_122737) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "post_coments", force: :cascade do |t|
+  create_table "post_comments", force: :cascade do |t|
     t.text "comment"
     t.integer "user_id"
     t.integer "post_image_id"
