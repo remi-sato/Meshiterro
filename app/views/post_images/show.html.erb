@@ -11,3 +11,18 @@
   <% end %>
 </div>
 
+<div>
+  <p>コメント件数:<%= @post_image.post_comments.count %></p>
+  <%= @post_image.post_comments.each do |post_comment| %>
+   <p><%=image_tag post_comment.user.get_profile_image(100x100) %></p>
+   <%= post_comment.user.name %>
+   <%= post_comment.create_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+  <% end %>
+ </div> 
+
+ <div>
+  <%=form_with model:[@post_image,@post_comment] do |f| %>
+    <%= f.text_area :comment,rows: "5" ,placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>  
+</div>
