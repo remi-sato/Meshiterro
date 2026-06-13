@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+ 
   resources :users, only: [:new, :create, :show, :edit, :update], path_names: {new:'sign_up'}
   resource :session
   resources :passwords, param: :token
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
    resources :post_comments,only: [:create]
   end
  resources :users, only: [:show, :edit, :update]
+ resource :map, only: [:show]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

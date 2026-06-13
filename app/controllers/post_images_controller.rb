@@ -15,7 +15,14 @@ class PostImagesController < ApplicationController
   end  
 
   def index
-    @post_images=PostImage.page(params[:page])
+   respond_to do |format|
+    format.html do
+     @post_images=PostImage.page(params[:page])
+    end
+    format.json do
+     @post_images=PostImage.all
+    end
+   end
   end
 
   def show
@@ -32,7 +39,7 @@ class PostImagesController < ApplicationController
   private
 
   def post_image_params
-    params.require(:post_image).permit(:shop_name, :image, :caption)
+    params.require(:post_image).permit(:shop_name, :image, :caption, :address)
   end  
   
 end

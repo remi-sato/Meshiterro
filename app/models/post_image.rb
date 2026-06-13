@@ -9,6 +9,12 @@ class PostImage < ApplicationRecord
   validates :shop_name, presence: true
   # imageが存在しているかを確認するバリデーション
   validates :image, presence:true
+  validates :address,presence: true
+
+  #  addressカラムの内容を緯度経度に変換する
+  geocoded_by :address
+  # バリデーション実行後に変換処理を実行して、latitudeカラムとlongitudeカラムに緯度経度の値が入力される
+  after_validation :geocode
 
    def get_image
     unless image.attached?
